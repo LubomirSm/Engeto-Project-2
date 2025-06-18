@@ -11,12 +11,20 @@ def get_number_for_guessing():
     """
     Function to generate a 4-digit number for guessing.
     """
-    number = ""
+    number = str(random.randint(1, 9))
     while len(number) < 4:
         digit = str(random.randint(0, 9))
         if digit not in number:
             number += digit
     return number
+
+def check_empty(number):
+    """
+    Function to check if the inpit is empty.
+    """
+    if number == "":
+        return True
+    return False
 
 def begins_with_zero(number):
     """
@@ -31,7 +39,7 @@ def get_user_guess():
     """
     while True:
         user_input = input(">>> ")#("Enter a 4-digit number: ")
-        print(("-" * 79))
+#        print(("-" * 79))
 #        if user_input.isdigit() and len(user_input) == 4:
         return user_input
 #        else:
@@ -89,7 +97,10 @@ number_for_guessing = get_number_for_guessing()
 
 while True:
     user_guess = get_user_guess()
-    if begins_with_zero(user_guess):
+    if check_empty(user_guess):
+        print("You didn't enter anything. Please try again.")
+        continue
+    elif begins_with_zero(user_guess):
         print("Your number begins with zero. Please try again.")
         continue
     elif not is_number_len_four(user_guess):
@@ -109,4 +120,3 @@ while True:
     else:
         print("Try again!")
         print(section)
-#        print("Enter a number:")
