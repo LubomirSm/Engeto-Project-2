@@ -9,7 +9,7 @@ import random
 #Functions for the game
 def get_number_for_guessing():
     """
-    Function to generate a 4-digit number for guessing.
+    Function to generate a 4-digit number for guessing without duplicates.
     """
     number = str(random.randint(1, 9))
     while len(number) < 4:
@@ -20,11 +20,10 @@ def get_number_for_guessing():
 
 def check_empty(number):
     """
-    Function to check if the inpit is empty.
+    Function to check if the input is empty.
     """
     if number == "":
         return True
-    return False
 
 def begins_with_zero(number):
     """
@@ -38,12 +37,8 @@ def get_user_guess():
     Function to get a guess from the user.
     """
     while True:
-        user_input = input(">>> ")#("Enter a 4-digit number: ")
-#        print(("-" * 79))
-#        if user_input.isdigit() and len(user_input) == 4:
+        user_input = input(">>> ")
         return user_input
-#        else:
-#            print("Wrong input. Please enter a 4-digit number.")
 
 def compare_numbers(number_for_guessing, user_guess):
     """
@@ -86,13 +81,14 @@ def check_numeric(number):
 
 #Run the game
 section = ("-" * 79)
-print("Hi there!")
-print(section)
-print("""I've generated a random 4 digit number for you.
-Let's play a bulls and cows game.""")
-print(section)
-print("Enter a number:")
-print(section)
+print(
+    f"Hi there!\n{section}\n"
+    "I've generated a random 4 digit number for you.\n"
+    "Let's play a bulls and cows game.\n"
+    f"{section}\n"
+    "Enter a number:\n"
+    f"{section}"
+)
 number_for_guessing = get_number_for_guessing()
 
 while True:
@@ -112,6 +108,7 @@ while True:
     elif not check_numeric(user_guess):
         print("Your input is not numeric. Please try again.")
         continue
+
     bulls, cows = compare_numbers(number_for_guessing, user_guess)
     print(f"Bulls: {bulls}, Cows: {cows}")
     if bulls == 4:
