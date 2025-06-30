@@ -91,11 +91,16 @@ print(
 )
 number_for_guessing = get_number_for_guessing()
 
+attempts = 0
 while True:
     user_guess = get_user_guess()
+    attempts += 1
     if check_empty(user_guess):
         print("You didn't enter anything. Please try again.")
         continue
+    elif not check_numeric(user_guess):
+        print("Your input is not numeric. Please try again.")
+        continue    
     elif begins_with_zero(user_guess):
         print("Your number begins with zero. Please try again.")
         continue
@@ -105,14 +110,11 @@ while True:
     elif check_duplicates(user_guess):
         print("Your number contains duplicates. Please try again.")
         continue
-    elif not check_numeric(user_guess):
-        print("Your input is not numeric. Please try again.")
-        continue
 
     bulls, cows = compare_numbers(number_for_guessing, user_guess)
     print(f"Bulls: {bulls}, Cows: {cows}")
     if bulls == 4:
-        print("Congratulations! You've guessed the right number!")
+        print(f"Congratulations! You've guessed the right number in {attempts} attempts!")
         break
     else:
         print("Try again!")
