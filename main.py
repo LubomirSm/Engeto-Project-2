@@ -9,9 +9,7 @@ import random
 
 # Constants
 number_length = 4 # Length of the number to guess. Max is 10.
-
-# Section separator for better readability
-section = "-" * 79
+section_separator = "-" * 79 # Section separator for better readability.
 
 # Functions for the game
 def get_number_for_guessing(number_length):
@@ -82,13 +80,13 @@ def is_numeric(number):
     return number.isdigit()
 
 # Main program starts here
-print(section)
-print(f"Hi there!\n{section}")
+print(section_separator)
+print(f"Hi there!\n{section_separator}")
 print(f"I've generated a random {number_length} digit number for you.")
 print("Let's play a bulls and cows game.")
-print(section)
+print(section_separator)
 print("Enter a number:")
-print(section)
+print(section_separator)
 
 # Main game loop
 number_for_guessing = get_number_for_guessing(number_length)
@@ -130,4 +128,4 @@ while True:
         break
     else:
         print("Try again!")
-        print(section)
+        print(section_separator)
